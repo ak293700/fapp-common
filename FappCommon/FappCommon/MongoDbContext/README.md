@@ -1,16 +1,16 @@
 ## Common
-IBaseMongoDbContext { 
+IBaseMongoDbContext { // OK
     
 }
 
-BaseMockMongoDbContext : IBaseMongoDbContext 
+BaseMockMongoDbContext : IBaseMongoDbContext // OK 
 {
 - abstract GenerateDatabaseFromConnectionString(): BaseMockMongoDbContext;
 - abstract InitCollections();
 - abstract RunMigrations();
 }
 
-BaseMongoDatabaseFixture
+BaseMongoDatabaseFixture // OK
 {
 - GenerateDatabase<T>(): T where T extends BaseMockMongoDbContext;
 - ImportData()
@@ -37,13 +37,13 @@ BaseTest: BaseMongoTest {
 - 
 }
 
-MockMongoDbContext<>: BaseMockMongoDbContext, IApplicationMongoDbContext 
+MockMongoDbContext<>: BaseMockMongoDbContext, IApplicationMongoDbContext // OK
 {
 - override InitCollections()
 - 
 }
   
-MongoDatabaseFixture : BaseMongoDatabaseFixture
+MongoDatabaseFixture : BaseMongoDatabaseFixture // OK
 {
 
 }

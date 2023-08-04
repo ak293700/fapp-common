@@ -1,8 +1,8 @@
 using MongoDB.Driver;
 
-namespace FappCommon.MongoDbContext.Mock;
+namespace FappCommon.MongoDbContext;
 
-public abstract class BaseMockMongoDbContext
+public abstract class BaseMockMongoDbContext: IBaseMongoDbContext
 {
     public string DatabaseName { get; private init; } = null!;
     public IMongoClient Client { get; private init; } = null!;
@@ -20,13 +20,13 @@ public abstract class BaseMockMongoDbContext
             DatabaseName = databaseName,
         };
         
-        mock.InitCollections(database);
         mock.RunMigrations(connectionString);
+        mock.InitCollections(database);
 
         return mock;
     }
-    
-    
-    public abstract void InitCollections(IMongoDatabase database);
-    public abstract void RunMigrations(string connectionString);
+
+
+    protected abstract void InitCollections(IMongoDatabase database);
+    protected abstract void RunMigrations(string connectionString);
 }
