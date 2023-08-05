@@ -1,6 +1,6 @@
-namespace FappCommon.MongoDbContext;
+namespace FappCommon.Mongo4Test;
 
-public abstract class BaseMongoTest<TMockMongoContext>/* : IDisposable*/
+public abstract class BaseMongoTest<TMockMongoContext> : IDisposable
     where TMockMongoContext : BaseMockMongoDbContext, new()
 {
     protected readonly BaseMongoDatabaseFixture<TMockMongoContext> Fixture;
@@ -13,9 +13,8 @@ public abstract class BaseMongoTest<TMockMongoContext>/* : IDisposable*/
         Context = Fixture.GenerateDatabase();
     }
 
-
-    // public void Dispose()
-    // {
-    //     _context.Dispose();
-    // }
+    public void Dispose()
+    {
+        Context.Dispose();
+    }
 }
