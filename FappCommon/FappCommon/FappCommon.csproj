@@ -8,7 +8,7 @@
     
     <PropertyGroup>
         <PackageId>FappCommon</PackageId>
-        <Version>1.0.0</Version>
+        <Version>2.0.0</Version>
         <Authors>Alexandre AKDENIZ</Authors>
         <Description>This package is there to write code once and shared it through the Fapp project</Description>
         <PackageProjectUrl>https://github.com/ak293700/fapp-common</PackageProjectUrl>
@@ -16,7 +16,7 @@
     </PropertyGroup>
     
     <ItemGroup>
-      <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0"/>
       <PackageReference Include="Mongo2Go" Version="3.1.3" />
     </ItemGroup>
 
