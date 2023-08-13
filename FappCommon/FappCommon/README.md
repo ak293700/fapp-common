@@ -1,6 +1,6 @@
 # Mongo4Test
 
-Easily create test for mocking mongo database with Seed and
+Easily create, seed, with migration mongo database for tests
 
 ## Instructions
 
@@ -25,7 +25,7 @@ Singleton that creates a mongo instance that is shared between every test
 
 Needed to be able to share YourMongoDatabaseFixture between the tests
 
-Should have the tag `[Collection(UniqueName)]`
+Should have the tag `[CollectionDefinition(UniqueName)]`
 
 #### Implement
 
@@ -43,4 +43,6 @@ A class that will do some XUnit tests
 
 Create a methods to seed you database using `Fixture.ImportData`
 and then call these methods in the constructor
+
+Should have the tag `[Collection(UniqueName)]`
 

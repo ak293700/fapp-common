@@ -8,5 +8,5 @@ public class NotLoggedInApplicationException : UserException
     {
     }
 
-    public static NotLoggedInApplicationException Instance => new ("No user logged in.");
+    public static NotLoggedInApplicationException Instance => new("No user logged in.");
 }

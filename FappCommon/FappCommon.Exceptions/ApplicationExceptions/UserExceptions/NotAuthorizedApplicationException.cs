@@ -7,7 +7,7 @@ public class NotAuthorizedApplicationException : UserException
     public NotAuthorizedApplicationException(string message) : base(message)
     {
     }
-    
-    public static NotAuthorizedApplicationException Instance => new ("This action require authorization you don't have.");
 
+    public static NotAuthorizedApplicationException Instance =>
+        new("This action require authorization you don't have.");
 }

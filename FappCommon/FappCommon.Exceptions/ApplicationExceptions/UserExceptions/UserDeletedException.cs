@@ -7,7 +7,6 @@ public class UserDeletedException : UserException
     public UserDeletedException(string message) : base(message)
     {
     }
-    
-    public static UserDeletedException Instance => new ("The user has been deleted.");
 
+    public static UserDeletedException Instance => new("The user has been deleted.");
 }
