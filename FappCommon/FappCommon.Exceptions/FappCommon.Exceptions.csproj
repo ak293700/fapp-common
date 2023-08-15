@@ -8,7 +8,7 @@
 
     <PropertyGroup>
         <PackageId>FappCommon.Exceptions</PackageId>
-        <Version>1.0.0</Version>
+        <Version>1.0.1</Version>
         <Authors>Alexandre AKDENIZ</Authors>
         <Description>Declare expetions commonly used</Description>
         <RepositoryUrl>https://github.com/ak293700/fapp-common</RepositoryUrl>

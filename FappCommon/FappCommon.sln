@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FappCommon", "FappCommon\Fa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FappCommon.Exceptions", "FappCommon.Exceptions\FappCommon.Exceptions.csproj", "{E19A13B4-6F6D-42D9-BC1D-138B4B9241A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FappCommon.Mongo4Test", "FappCommon.Mongo4Test\FappCommon.Mongo4Test.csproj", "{AD672D0E-595F-4B9D-9C40-AC29F53EFBD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{E19A13B4-6F6D-42D9-BC1D-138B4B9241A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E19A13B4-6F6D-42D9-BC1D-138B4B9241A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E19A13B4-6F6D-42D9-BC1D-138B4B9241A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD672D0E-595F-4B9D-9C40-AC29F53EFBD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD672D0E-595F-4B9D-9C40-AC29F53EFBD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD672D0E-595F-4B9D-9C40-AC29F53EFBD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD672D0E-595F-4B9D-9C40-AC29F53EFBD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

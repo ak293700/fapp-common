@@ -14,7 +14,7 @@ namespace FappCommon.CurrentUserService;
 public class CurrentUserServiceImpl : ICurrentUserService
 {
     private readonly string? _userId = null;
-    public string UserId => _userId ?? throw NotLoggedInApplicationException.Instance;
+    public string UserId => _userId ?? throw NotLoggedInException.Instance;
     public bool IsUserLoggedIn { get; init; }
     public ClaimsPrincipal? UserClaims { get; init; }
 
