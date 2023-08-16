@@ -1,6 +1,6 @@
 using System.Security.Claims;
 
-namespace FappCommon.Interfaces;
+namespace FappCommon.Interfaces.ICurrentUserServices;
 
 public interface ICurrentUserService<T>
 {

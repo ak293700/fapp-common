@@ -1,8 +1,9 @@
+using FappCommon.Interfaces.ICurrentUserServices;
 using Microsoft.AspNetCore.Http;
 
-namespace FappCommon.Implementations;
+namespace FappCommon.Implementations.ICurrentUserServices;
 
-public class CurrentUserServiceIntImpl : CurrentUserServiceBaseImpl<int>
+public class CurrentUserServiceIntImpl : CurrentUserServiceBaseImpl<int>, ICurrentUserServiceInt
 {
     public CurrentUserServiceIntImpl(IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
     {

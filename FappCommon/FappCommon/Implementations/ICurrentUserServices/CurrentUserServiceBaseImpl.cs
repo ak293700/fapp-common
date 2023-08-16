@@ -1,10 +1,10 @@
 using System.Security.Claims;
 using FappCommon.Exceptions.ApplicationExceptions.UserExceptions;
 using FappCommon.Exceptions.ApplicationExceptions.UserExceptions.Base;
-using FappCommon.Interfaces;
+using FappCommon.Interfaces.ICurrentUserServices;
 using Microsoft.AspNetCore.Http;
 
-namespace FappCommon.Implementations;
+namespace FappCommon.Implementations.ICurrentUserServices;
 
 /// <summary>
 /// Service that manage UserRights.
