@@ -6,4 +6,18 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <PackageId>FappCommon.Mongo4Test</PackageId>
+        <Version>1.0.0</Version>
+        <Authors>Alexandre AKDENIZ</Authors>
+        <Description>Declare set of class to easily use MongoDb (ussing Mongo2Go) for testing purpose</Description>
+        <RepositoryUrl>https://github.com/ak293700/fapp-common</RepositoryUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+        <PackageReference Include="Mongo2Go" Version="3.1.3"/>
+    </ItemGroup>
+
 </Project>

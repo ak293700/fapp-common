@@ -1,6 +1,6 @@
 # Mongo4Test
 
-Easily create, seed, with migration mongo database for tests
+Easily create, seed, mongo database with migration for tests
 
 ## Instructions
 
