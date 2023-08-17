@@ -15,8 +15,10 @@ namespace FappCommon.Implementations.ICurrentUserServices;
 public abstract class CurrentUserServiceBaseImpl<T> : ICurrentUserService<T>
 {
     // ReSharper disable once InconsistentNaming
-    private T? _userId { get; set; }
-    public T UserId => _userId ??= ConvertUserIdAsStringToUserId() ?? throw NotLoggedInException.Instance;
+    private T? _userId { get; set; } = new T?(null);
+
+    public T UserId => (_userId ??= ConvertUserIdAsStringToUserId())
+                       ?? throw NotLoggedInException.Instance;
 
 
     private readonly string? _userIdAsString = null;
