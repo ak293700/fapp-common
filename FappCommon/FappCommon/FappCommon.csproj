@@ -8,7 +8,7 @@
 
     <PropertyGroup>
         <PackageId>FappCommon</PackageId>
-        <Version>2.2.2</Version>
+        <Version>2.2.3</Version>
         <Authors>Alexandre AKDENIZ</Authors>
         <Description>This package is there to write code once and shared it through the Fapp project</Description>
         <RepositoryUrl>https://github.com/ak293700/fapp-common</RepositoryUrl>

@@ -15,10 +15,25 @@ namespace FappCommon.Implementations.ICurrentUserServices;
 public abstract class CurrentUserServiceBaseImpl<T> : ICurrentUserService<T>
 {
     // ReSharper disable once InconsistentNaming
-    private T? _userId { get; set; } = new T?(null);
+    private T _userId { get; set; } = default!;
 
-    public T UserId => (_userId ??= ConvertUserIdAsStringToUserId())
-                       ?? throw NotLoggedInException.Instance;
+    private bool _isSet = false;
+
+    public T UserId
+    {
+        get
+        {
+            if (_isSet)
+            {
+                if (_userIdAsString is null)
+                    throw NotLoggedInException.Instance;
+                return _userId!;
+            }
+
+            _isSet = true;
+            return _userId = ConvertUserIdAsStringToUserId();
+        }
+    }
 
 
     private readonly string? _userIdAsString = null;
@@ -37,5 +52,5 @@ public abstract class CurrentUserServiceBaseImpl<T> : ICurrentUserService<T>
             .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
     }
 
-    protected abstract T? ConvertUserIdAsStringToUserId();
+    protected abstract T ConvertUserIdAsStringToUserId();
 }
