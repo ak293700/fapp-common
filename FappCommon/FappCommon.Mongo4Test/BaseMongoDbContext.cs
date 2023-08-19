@@ -19,7 +19,8 @@ public abstract class BaseMongoDbContext : IBaseMongoDbContext
         context.Options = options;
         context.LoggerFactory = context.CreateLoggerFactory(configuration);
 
-        IMongoDatabase? database = context.CreateClient(options.ConnectionStringName).GetDatabase(options.DatabaseName);
+        string connectionString = configuration.GetConnectionString(options.ConnectionStringName)!;
+        IMongoDatabase? database = context.CreateClient(connectionString).GetDatabase(options.DatabaseName);
         context.InitializeCollections(database);
 
         return context;

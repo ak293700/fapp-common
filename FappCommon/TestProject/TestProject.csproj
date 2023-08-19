@@ -7,4 +7,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\FappCommon.Exceptions\FappCommon.Exceptions.csproj"/>
+        <ProjectReference Include="..\FappCommon.Mongo4Test\FappCommon.Mongo4Test.csproj"/>
+        <ProjectReference Include="..\FappCommon\FappCommon.csproj"/>
+    </ItemGroup>
+
 </Project>
