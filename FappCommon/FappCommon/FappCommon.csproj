@@ -16,7 +16,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FappCommon.Exceptions" Version="1.0.1"/>
+        <PackageReference Include="FappCommon.Exceptions" Version="1.0.3"/>
         <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2"/>
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0"/>
     </ItemGroup>

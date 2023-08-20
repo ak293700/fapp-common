@@ -15,4 +15,18 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 
+
+    <ItemGroup>
+        <PackageReference Include="Confluent.Kafka" Version="2.2.0"/>
+        <PackageReference Include="FappCommon.Exceptions" Version="1.0.3"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0"/>
+        <ItemGroup>
+            <Reference Include="Microsoft.Extensions.Logging.Configuration"/>
+        </ItemGroup>
+
+
+    </ItemGroup>
+
+
 </Project>
