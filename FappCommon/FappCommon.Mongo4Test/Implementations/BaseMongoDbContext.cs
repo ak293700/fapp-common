@@ -47,7 +47,7 @@ public abstract class BaseMongoDbContext : IBaseMongoDbContext
 
     public static void RunMigrations<TAssemblyType>(MongoDbOptions options, IConfiguration configuration)
     {
-        string connectionString = configuration.GetConnectionString(options.DatabaseName)
+        string connectionString = configuration.GetConnectionString(options.ConnectionStringName)
                                   ?? throw ConfigurationException.ValueNotFoundException.Instance;
 
         RunMigrations<TAssemblyType>(connectionString, options.DatabaseName);
