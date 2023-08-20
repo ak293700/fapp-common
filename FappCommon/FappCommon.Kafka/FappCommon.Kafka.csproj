@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>FappCommon.Kafka</PackageId>
+        <Version>1.0.0</Version>
+        <Authors>Alexandre AKDENIZ</Authors>
+        <Description>Set of method to produce kafka messages. Focus on logging</Description>
+        <RepositoryUrl>https://github.com/ak293700/fapp-common</RepositoryUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    </PropertyGroup>
+
+</Project>

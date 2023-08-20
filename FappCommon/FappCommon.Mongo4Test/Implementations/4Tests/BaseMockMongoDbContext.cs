@@ -3,7 +3,7 @@ using MongoDB.Driver;
 
 namespace FappCommon.Mongo4Test.Implementations._4Tests;
 
-public abstract class BaseMockMongoDbContext : IBaseMongoDbContext, IDisposable
+public abstract class BaseMockMongoDbContext : IBaseMongoDbContext
 {
     public string DatabaseName { get; private init; } = null!;
     public IMongoClient Client { get; private init; } = null!;

@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FappCommon.Mongo4Test", "Fa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{B8496BCD-CEC9-449D-881A-70B1BEDDDFAA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FappCommon.Kafka", "FappCommon.Kafka\FappCommon.Kafka.csproj", "{BB2A9E9B-B766-4793-A835-2C3A3CEE7F28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{B8496BCD-CEC9-449D-881A-70B1BEDDDFAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8496BCD-CEC9-449D-881A-70B1BEDDDFAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8496BCD-CEC9-449D-881A-70B1BEDDDFAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB2A9E9B-B766-4793-A835-2C3A3CEE7F28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB2A9E9B-B766-4793-A835-2C3A3CEE7F28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB2A9E9B-B766-4793-A835-2C3A3CEE7F28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB2A9E9B-B766-4793-A835-2C3A3CEE7F28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
