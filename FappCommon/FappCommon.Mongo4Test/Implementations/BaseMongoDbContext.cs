@@ -1,11 +1,12 @@
 using FappCommon.Exceptions.InfrastructureExceptions.ConfigurationExceptions.Base;
+using FappCommon.Mongo4Test.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 using MongoDB.Driver.Core.Configuration;
 using MongoDBMigrations;
 
-namespace FappCommon.Mongo4Test;
+namespace FappCommon.Mongo4Test.Implementations;
 
 public abstract class BaseMongoDbContext : IBaseMongoDbContext
 {

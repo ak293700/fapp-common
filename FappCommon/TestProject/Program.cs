@@ -3,6 +3,8 @@
 
 using FappCommon.Mocks;
 using FappCommon.Mongo4Test;
+using FappCommon.Mongo4Test.Implementations;
+using FappCommon.Mongo4Test.Interfaces;
 using Microsoft.Extensions.Configuration;
 using TestProject;
 

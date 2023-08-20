@@ -1,4 +1,4 @@
-namespace FappCommon.Mongo4Test;
+namespace FappCommon.Mongo4Test.Implementations._4Tests;
 
 public abstract class BaseMongoTest<TMockMongoContext> : IDisposable
     where TMockMongoContext : BaseMockMongoDbContext, new()

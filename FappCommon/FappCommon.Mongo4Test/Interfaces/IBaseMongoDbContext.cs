@@ -1,4 +1,4 @@
-namespace FappCommon.Mongo4Test;
+namespace FappCommon.Mongo4Test.Interfaces;
 
 public interface IBaseMongoDbContext : IDisposable
 {

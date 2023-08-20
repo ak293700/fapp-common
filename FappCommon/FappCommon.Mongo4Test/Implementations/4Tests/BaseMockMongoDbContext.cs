@@ -1,6 +1,7 @@
+using FappCommon.Mongo4Test.Interfaces;
 using MongoDB.Driver;
 
-namespace FappCommon.Mongo4Test;
+namespace FappCommon.Mongo4Test.Implementations._4Tests;
 
 public abstract class BaseMockMongoDbContext : IBaseMongoDbContext, IDisposable
 {

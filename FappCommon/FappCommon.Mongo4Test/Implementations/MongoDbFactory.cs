@@ -1,6 +1,7 @@
+using FappCommon.Mongo4Test.Interfaces;
 using Microsoft.Extensions.Configuration;
 
-namespace FappCommon.Mongo4Test;
+namespace FappCommon.Mongo4Test.Implementations;
 
 public class MongoDbFactory<TDbContext> : IMongoDbFactory<TDbContext>
     where TDbContext : BaseMongoDbContext, new()

@@ -1,4 +1,4 @@
-using FappCommon.Mongo4Test;
+using FappCommon.Mongo4Test.Implementations;
 using MongoDB.Driver;
 
 namespace TestProject;

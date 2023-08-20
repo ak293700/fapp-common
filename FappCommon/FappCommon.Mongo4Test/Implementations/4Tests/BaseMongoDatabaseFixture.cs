@@ -1,7 +1,7 @@
 using Mongo2Go;
 using Mongo2Go.Helper;
 
-namespace FappCommon.Mongo4Test;
+namespace FappCommon.Mongo4Test.Implementations._4Tests;
 
 public abstract class BaseMongoDatabaseFixture<TMockMongoContext> : IDisposable
     where TMockMongoContext : BaseMockMongoDbContext, new()
