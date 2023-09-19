@@ -72,4 +72,23 @@ public static class LogTraceMiddlewareExtensions
     {
         return builder.UseMiddleware<LogTraceMiddleware>();
     }
+
+    public static IServiceCollection AddLogTraceMiddleware(
+        this IServiceCollection services)
+    {
+        services.AddScoped<LogTraceMiddleware>();
+        return services;
+    }
+
+    public static IServiceCollection AddLogTraceMiddlewareWithCurrentUserService<TCurrentUserService>(
+        this IServiceCollection services)
+        where TCurrentUserService : ICurrentUserService
+
+    {
+        services.AddScoped<ICurrentUserService>(
+            provider => provider.GetService<TCurrentUserService>()!
+        );
+        services.AddScoped<LogTraceMiddleware>();
+        return services;
+    }
 }

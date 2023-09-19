@@ -12,7 +12,13 @@ using TestWebProject.Controllers;
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddScoped<LogTraceMiddleware>();
+// builder.Services.AddScoped<LogTraceMiddleware>();
+builder.Services.AddScoped<ICurrentUserServiceInt, CurrentUserServiceIntImpl>();
+// builder.Services.AddScoped<ICurrentUserService>(
+//     provider => provider.GetService<ICurrentUserServiceInt>()!
+// );
+
+builder.Services.AddLogTraceMiddlewareWithCurrentUserService<ICurrentUserServiceInt>();
 
 #region Swagger
 
@@ -56,10 +62,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddScoped<ICurrentUserServiceInt, CurrentUserServiceIntImpl>();
-builder.Services.AddScoped<ICurrentUserService>(
-    provider => provider.GetService<ICurrentUserServiceInt>()!
-);
 
 
 WebApplication app = builder.Build();
