@@ -8,7 +8,7 @@
 
     <PropertyGroup>
         <PackageId>FappCommon</PackageId>
-        <Version>2.2.3</Version>
+        <Version>2.3.0</Version>
         <Authors>Alexandre AKDENIZ</Authors>
         <Description>This package is there to write code once and shared it through the Fapp project</Description>
         <RepositoryUrl>https://github.com/ak293700/fapp-common</RepositoryUrl>
@@ -19,6 +19,7 @@
         <PackageReference Include="FappCommon.Exceptions" Version="1.0.3"/>
         <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2"/>
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0"/>
     </ItemGroup>
 
 

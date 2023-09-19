@@ -12,11 +12,14 @@ public class KafkaLogProducerService
         _config = config;
     }
 
-    public void ProduceMessage(LogMessage message)
+    public async Task Produce(KafkaLogMessage message)
     {
-        using IProducer<Null, LogMessage>?
-            producer = new ProducerBuilder<Null, LogMessage>(_config.ProducerConfig).Build();
-        
-        producer.ProduceAsync(_config.Topic, new Message<Null, LogMessage> { Value = message });
+        using IProducer<Null, KafkaLogMessage>?
+            producer = new ProducerBuilder<Null, KafkaLogMessage>(_config.ProducerConfig)
+                .SetKeySerializer(Serializers.Null)
+                .SetValueSerializer(KafkaLogMessage.Serializer)
+                .Build();
+
+        await producer.ProduceAsync(_config.Topic, new Message<Null, KafkaLogMessage> { Value = message });
     }
 }

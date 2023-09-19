@@ -1,15 +1,13 @@
 using Confluent.Kafka;
 using FappCommon.Exceptions.InfrastructureExceptions.ConfigurationExceptions;
-using FappCommon.Exceptions.InfrastructureExceptions.ConfigurationExceptions.Base;
 using Microsoft.Extensions.Configuration;
-
 
 namespace FappCommon.Kafka.Config;
 
 public class KafkaConfig
 {
     public string BootstrapServers { get; }
-    public string GroupId { get; }
+    public string Group { get; }
     public string Topic { get; }
     public ProducerConfig ProducerConfig { get; }
     public ConsumerConfig ConsumerConfig { get; }
@@ -23,10 +21,10 @@ public class KafkaConfig
                                $"Kafka:{nameof(BootstrapServers)}");
 
         // Needed only for consumer
-        GroupId = section["GroupId"]
-                  ?? (!isConsumer
-                      ? string.Empty
-                      : throw ValueNotFoundConfigurationException.GenerateException($"Kafka:{nameof(GroupId)}"));
+        Group = section["Group"]
+                ?? (!isConsumer
+                    ? string.Empty
+                    : throw ValueNotFoundConfigurationException.GenerateException($"Kafka:{nameof(Group)}"));
 
         Topic = section["Topic"]
                 ?? throw ValueNotFoundConfigurationException.GenerateException($"Kafka:{nameof(Topic)}");
@@ -35,7 +33,7 @@ public class KafkaConfig
         ConsumerConfig = new ConsumerConfig
         {
             BootstrapServers = BootstrapServers,
-            GroupId = GroupId,
+            GroupId = Group,
             AutoOffsetReset = AutoOffsetReset.Earliest
         };
     }

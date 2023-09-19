@@ -1,3 +1,4 @@
+using FappCommon.Kafka.Config;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
@@ -10,20 +11,8 @@ public static class KafkaLoggerExtension
     public static ILoggingBuilder AddKafkaLogger(this ILoggingBuilder builder)
     {
         builder.AddConfiguration();
-
-        builder.Services.TryAddEnumerable(ServiceDescriptor.Singleton<ILoggerProvider, DbLoggerProvider>());
-
-        LoggerProviderOptions.RegisterProviderOptions<DbLoggerConfiguration, DbLoggerProvider>(builder.Services);
+        builder.Services.TryAddEnumerable(ServiceDescriptor.Singleton<ILoggerProvider, KafkaLoggerProvider>());
 
         return builder;
     }
-    //
-    // public static ILoggingBuilder AddKafkaLogger(this ILoggingBuilder builder,
-    //     Action<DbLoggerConfiguration> configure)
-    // {
-    //     builder.AddDbLogger();
-    //     builder.Services.Configure(configure);
-    //
-    //     return builder;
-    // }
 }

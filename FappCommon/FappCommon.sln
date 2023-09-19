@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FappCommon.Kafka", "FappCommon.Kafka\FappCommon.Kafka.csproj", "{BB2A9E9B-B766-4793-A835-2C3A3CEE7F28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWebProject", "TestWebProject\TestWebProject.csproj", "{0502C0A9-B9B9-4064-A7FE-08DB4EB4E78E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{BB2A9E9B-B766-4793-A835-2C3A3CEE7F28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB2A9E9B-B766-4793-A835-2C3A3CEE7F28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB2A9E9B-B766-4793-A835-2C3A3CEE7F28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0502C0A9-B9B9-4064-A7FE-08DB4EB4E78E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0502C0A9-B9B9-4064-A7FE-08DB4EB4E78E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0502C0A9-B9B9-4064-A7FE-08DB4EB4E78E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0502C0A9-B9B9-4064-A7FE-08DB4EB4E78E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
