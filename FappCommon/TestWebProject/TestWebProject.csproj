@@ -6,8 +6,19 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+
     <ItemGroup>
-        <Folder Include="Controllers\"/>
+        <ProjectReference Include="..\FappCommon.Exceptions\FappCommon.Exceptions.csproj"/>
+        <ProjectReference Include="..\FappCommon.Kafka\FappCommon.Kafka.csproj"/>
+        <ProjectReference Include="..\FappCommon.Mongo4Test\FappCommon.Mongo4Test.csproj"/>
+        <ProjectReference Include="..\FappCommon\FappCommon.csproj"/>
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.11"/>
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0"/>
     </ItemGroup>
 
 </Project>
