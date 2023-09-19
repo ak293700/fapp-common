@@ -1,5 +1,7 @@
+using FappCommon.Interfaces.ICurrentUserServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace FappCommon.Middlewares;
@@ -37,9 +39,26 @@ public class LogTraceMiddleware : IMiddleware
             }
 
             HttpRequest request = context.Request;
+
+            string userId = "null";
+            try
+            {
+                IServiceScope? currentUserService = context.RequestServices.CreateScope();
+                ICurrentUserService? currentUser = currentUserService
+                    .ServiceProvider
+                    .GetRequiredService<ICurrentUserService>();
+
+                if (currentUser.IsUserLoggedIn)
+                    userId = currentUser.UserIdAsString;
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+
             _logger.Log(logLevel,
-                """Request at "{Path}" failed with status code {StatusCode}""",
-                request.Path, response.StatusCode);
+                "Request at \"{Path}\" failed with status code {StatusCode} for user with id \"{UserId}\"",
+                request.Path, response.StatusCode, userId);
 
             return Task.CompletedTask;
         });
