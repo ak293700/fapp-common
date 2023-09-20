@@ -1,4 +1,3 @@
-using System.Reflection;
 using System.Text.Json;
 using FappCommon.Kafka.Interfaces;
 using Microsoft.Extensions.Logging;
@@ -8,12 +7,13 @@ namespace FappCommon.Kafka.Log;
 public class KafkaLogger : IKafkaLogger
 {
     private readonly KafkaLogProducerService _kafkaLogProducerService;
-    private static readonly string? CurrentAppName = Assembly.GetEntryAssembly()?.GetName().Name;
+    private readonly string? _currentAppName;
     private readonly string _sourceClassName;
 
-    public KafkaLogger(KafkaLogProducerService kafkaLogProducerService, string sourceClassName)
+    public KafkaLogger(KafkaLogProducerService kafkaLogProducerService, string? currentAppName, string sourceClassName)
     {
         _kafkaLogProducerService = kafkaLogProducerService;
+        _currentAppName = currentAppName;
         _sourceClassName = sourceClassName;
     }
 
@@ -44,7 +44,7 @@ public class KafkaLogger : IKafkaLogger
             template,
             logLevel,
             DateTime.Now,
-            CurrentAppName,
+            _currentAppName,
             _sourceClassName,
             JsonSerializer.Serialize(arguments));
 
