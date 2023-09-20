@@ -9,10 +9,12 @@ public class KafkaLogger : IKafkaLogger
 {
     private readonly KafkaLogProducerService _kafkaLogProducerService;
     private static readonly string? CurrentAppName = Assembly.GetEntryAssembly()?.GetName().Name;
+    private readonly string _sourceClassName;
 
-    public KafkaLogger(KafkaLogProducerService kafkaLogProducerService)
+    public KafkaLogger(KafkaLogProducerService kafkaLogProducerService, string sourceClassName)
     {
         _kafkaLogProducerService = kafkaLogProducerService;
+        _sourceClassName = sourceClassName;
     }
 
     public IDisposable BeginScope<TState>(TState state) where TState : notnull
@@ -43,11 +45,10 @@ public class KafkaLogger : IKafkaLogger
             logLevel,
             DateTime.Now,
             CurrentAppName,
+            _sourceClassName,
             JsonSerializer.Serialize(arguments));
-        Console.WriteLine(kafkaLogMessage);
-        Console.WriteLine($"event.Name = {eventId.Name}");
 
-        // TODO: Remove comment
+        // Not a problem because is life time scoped
         Task.Run(() => _kafkaLogProducerService.Produce(kafkaLogMessage));
     }
 

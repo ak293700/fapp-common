@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Runtime.Versioning;
 using FappCommon.Exceptions.InfrastructureExceptions;
 using FappCommon.Kafka.Log;
@@ -9,29 +10,30 @@ namespace FappCommon.Kafka.Config;
 [UnsupportedOSPlatform("browser")]
 public class KafkaLoggerProvider : ILoggerProvider
 {
-    private KafkaLogger? LoggerSingleton { get; set; }
-    private IServiceProvider ServiceProvider { get; set; }
+    private readonly IServiceProvider _serviceProvider;
+    private readonly ConcurrentDictionary<string, KafkaLogger> _loggers = new(StringComparer.OrdinalIgnoreCase);
 
     public KafkaLoggerProvider(IServiceProvider serviceScope)
     {
-        ServiceProvider = serviceScope;
+        _serviceProvider = serviceScope;
     }
 
     public ILogger CreateLogger(string categoryName)
     {
-        if (LoggerSingleton is not null)
-            return LoggerSingleton;
+        if (_loggers.TryGetValue(categoryName, out KafkaLogger? logger))
+            return logger;
 
         KafkaProducerConfig config =
-            ServiceProvider.GetRequiredService<KafkaProducerConfig>()
+            _serviceProvider.GetRequiredService<KafkaProducerConfig>()
             ?? throw DependencyInjectionException.GenerateException(nameof(KafkaProducerConfig));
 
-        LoggerSingleton = new KafkaLogger(new KafkaLogProducerService(config));
+        logger = new KafkaLogger(new KafkaLogProducerService(config), categoryName);
+        _loggers.TryAdd(categoryName, logger);
 
-        return LoggerSingleton;
+        return logger;
     }
 
-    public void Dispose()
+    void IDisposable.Dispose()
     {
         // Nothing to dispose
     }

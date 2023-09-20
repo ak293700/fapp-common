@@ -13,6 +13,7 @@ public record KafkaLogMessage(
     LogLevel LogLevel,
     DateTime TimespanAsUtc,
     string? SourceAppName,
+    string? SourceClassName,
     string Data
 )
 {
