@@ -1,6 +1,9 @@
 using System.Text;
 using FappCommon.Implementations.ICurrentUserServices;
 using FappCommon.Interfaces.ICurrentUserServices;
+using FappCommon.Kafka.Config;
+using FappCommon.Kafka.Extensions;
+using FappCommon.Kafka.Log;
 using FappCommon.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -13,8 +16,10 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<ICurrentUserServiceInt, CurrentUserServiceIntImpl>();
-
 builder.Services.AddLogTraceMiddlewareWithCurrentUserService<ICurrentUserServiceInt>();
+
+builder.Services.AddSingleton<KafkaProducerConfig>();
+builder.Services.AddScoped<KafkaLogProducerService>();
 
 #region Swagger
 
@@ -58,6 +63,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 builder.Services.AddHttpContextAccessor();
+
+builder.Logging.ClearProviders();
+builder.Logging.AddKafkaLogger();
+
+// builder.Logging.AddConsole();
 
 
 WebApplication app = builder.Build();

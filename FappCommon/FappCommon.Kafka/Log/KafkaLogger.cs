@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Text.Json;
 using FappCommon.Kafka.Interfaces;
 using Microsoft.Extensions.Logging;
@@ -7,6 +8,7 @@ namespace FappCommon.Kafka.Log;
 public class KafkaLogger : IKafkaLogger
 {
     private readonly KafkaLogProducerService _kafkaLogProducerService;
+    private static readonly string? CurrentAppName = Assembly.GetEntryAssembly()?.GetName().Name;
 
     public KafkaLogger(KafkaLogProducerService kafkaLogProducerService)
     {
@@ -33,17 +35,25 @@ public class KafkaLogger : IKafkaLogger
         (string? template, Dictionary<string, object>? arguments) = GetTemplateAndArguments(state);
 
         if (template is null || arguments is null)
-            return; // have a backup plan here
+            return; // TODO: Have a backup plan here
 
+        // get the logging generic type fullname
         KafkaLogMessage kafkaLogMessage = new KafkaLogMessage(
             template,
             logLevel,
             DateTime.Now,
+            CurrentAppName,
             JsonSerializer.Serialize(arguments));
+        Console.WriteLine(kafkaLogMessage);
+        Console.WriteLine($"event.Name = {eventId.Name}");
 
+        // TODO: Remove comment
         Task.Run(() => _kafkaLogProducerService.Produce(kafkaLogMessage));
     }
 
+    /// <summary>
+    /// Extracts the template and arguments from the state object.
+    /// </summary>
     private static (string?, Dictionary<string, object>?) GetTemplateAndArguments<TState>(TState state)
     {
         if (state is not IReadOnlyList<KeyValuePair<string, object>> properties)

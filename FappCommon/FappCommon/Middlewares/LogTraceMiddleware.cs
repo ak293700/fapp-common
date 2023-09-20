@@ -58,7 +58,7 @@ public class LogTraceMiddleware : IMiddleware
 
             _logger.Log(logLevel,
                 "Request at \"{Path}\" failed with status code {StatusCode} for user with id \"{UserId}\"",
-                request.Path, response.StatusCode, userId);
+                request.Path.Value, response.StatusCode, userId);
 
             return Task.CompletedTask;
         });

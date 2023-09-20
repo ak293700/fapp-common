@@ -13,6 +13,12 @@ namespace TestWebProject.Controllers;
 public class DummyController : ControllerBase
 {
     public const string AuthToken = "1q2w3e4r5t6y7u8i9o0p";
+    private readonly ILogger<DummyController> _logger;
+
+    public DummyController(ILogger<DummyController> logger)
+    {
+        _logger = logger;
+    }
 
     [HttpGet("hello_world")]
     public Task<ActionResult<string>> GetHelloWorld()
@@ -31,8 +37,8 @@ public class DummyController : ControllerBase
     {
         Claim[] claims =
         {
-            new Claim(ClaimTypes.NameIdentifier, "1"),
-            new Claim(ClaimTypes.Name, "Test"),
+            new(ClaimTypes.NameIdentifier, "1"),
+            new(ClaimTypes.Name, "Test"),
         };
         SymmetricSecurityKey key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(AuthToken));
 
@@ -54,5 +60,13 @@ public class DummyController : ControllerBase
     public Task<ActionResult<string>> GetFailAuthorize()
     {
         return Task.FromResult<ActionResult<string>>(BadRequest("Fail!"));
+    }
+
+    [HttpGet("log")]
+    public Task<IActionResult> Log()
+    {
+        _logger.LogInformation("Test log");
+
+        return Task.FromResult<IActionResult>(Ok());
     }
 }
