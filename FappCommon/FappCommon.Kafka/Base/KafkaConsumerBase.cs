@@ -95,7 +95,7 @@ public abstract class KafkaConsumerBase<TMessage, TServiceStruct, TConfig> : Bac
         CancellationToken stoppingToken);
 }
 
-file class MessageSerializer<T> : ISerializer<T>, IDeserializer<T>
+internal class MessageSerializer<T> : ISerializer<T>, IDeserializer<T>
 {
     public byte[] Serialize(T data, SerializationContext context)
     {

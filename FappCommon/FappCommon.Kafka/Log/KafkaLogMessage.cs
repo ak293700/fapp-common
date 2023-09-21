@@ -1,7 +1,6 @@
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Confluent.Kafka;
+using FappCommon.Kafka.Base;
 using Microsoft.Extensions.Logging;
 
 namespace FappCommon.Kafka.Log;
@@ -15,23 +14,7 @@ public record KafkaLogMessage(
     string? SourceAppName,
     string? SourceClassName,
     string Data
-);
-
-public class KafkaJsonSerializer : IDeserializer<KafkaLogMessage>, ISerializer<KafkaLogMessage>
+)
 {
-    public byte[] Serialize(KafkaLogMessage data, SerializationContext context)
-    {
-        return Encoding.UTF8.GetBytes(JsonSerializer.Serialize(data));
-    }
-
-    public KafkaLogMessage Deserialize(ReadOnlySpan<byte> data, bool isNull, SerializationContext context)
-    {
-        if (isNull)
-        {
-            return default!;
-        }
-
-        string json = Encoding.UTF8.GetString(data.ToArray());
-        return JsonSerializer.Deserialize<KafkaLogMessage>(json)!;
-    }
+    internal static MessageSerializer<KafkaLogMessage> Serializer { get; } = new();
 }
