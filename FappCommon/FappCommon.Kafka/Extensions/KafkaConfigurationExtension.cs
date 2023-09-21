@@ -19,7 +19,7 @@ public static class KafkaConfigurationExtension
 
     public static IServiceCollection AddKafkaConsumer<TConsumer, TConfig>(this IServiceCollection services)
         where TConsumer : class, IKafkaConsumer
-        where TConfig : KafkaProducerConfig
+        where TConfig : KafkaConsumerConfig
     {
         services.TryAddSingleton<TConfig>();
         services.AddHostedService<TConsumer>();

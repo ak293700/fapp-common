@@ -15,9 +15,6 @@ public static class KafkaLoggerExtension
 
         services.AddKafkaProducer<KafkaLogProducerService, KafkaLogProducerConfig>();
 
-        services.TryAddSingleton<KafkaLogProducerConfig>();
-        services.TryAddScoped<KafkaLogProducerService>();
-
         builder.AddConfiguration();
         services.TryAddEnumerable(ServiceDescriptor.Singleton<ILoggerProvider, KafkaLoggerProvider>());
         return builder;

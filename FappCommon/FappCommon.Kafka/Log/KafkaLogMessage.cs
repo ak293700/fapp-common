@@ -15,10 +15,7 @@ public record KafkaLogMessage(
     string? SourceAppName,
     string? SourceClassName,
     string Data
-)
-{
-    public static KafkaJsonSerializer Serializer = new();
-}
+);
 
 public class KafkaJsonSerializer : IDeserializer<KafkaLogMessage>, ISerializer<KafkaLogMessage>
 {
