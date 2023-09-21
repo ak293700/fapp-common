@@ -1,13 +1,12 @@
 using Confluent.Kafka;
-using FappCommon.Kafka.Config;
 
 namespace FappCommon.Kafka.Log;
 
 public class KafkaLogProducerService
 {
-    private readonly KafkaProducerConfig _config;
+    private readonly KafkaLogProducerConfig _config;
 
-    public KafkaLogProducerService(KafkaProducerConfig config)
+    public KafkaLogProducerService(KafkaLogProducerConfig config)
     {
         _config = config;
     }

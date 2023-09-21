@@ -22,7 +22,7 @@ public class KafkaLoggerProvider : ILoggerProvider
 
     public KafkaLoggerProvider(IServiceProvider serviceScope, IConfiguration configuration)
     {
-        _serviceProvider = serviceScope;
+        _serviceProvider = serviceScope.CreateScope().ServiceProvider;
         _currentAppName = configuration.GetValue<string>("AppName")
                           ?? Assembly.GetEntryAssembly()?.GetName().FullName;
     }
@@ -32,8 +32,8 @@ public class KafkaLoggerProvider : ILoggerProvider
         if (_loggers.TryGetValue(categoryName, out KafkaLogger? logger))
             return logger;
 
-        KafkaProducerConfig config =
-            _serviceProvider.GetRequiredService<KafkaProducerConfig>()
+        KafkaLogProducerConfig config =
+            _serviceProvider.GetService<KafkaLogProducerConfig>()
             ?? throw DependencyInjectionException.GenerateException(nameof(KafkaProducerConfig));
 
         logger = new KafkaLogger(new KafkaLogProducerService(config), _currentAppName, categoryName);

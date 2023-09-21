@@ -1,9 +1,7 @@
 using System.Text;
 using FappCommon.Implementations.ICurrentUserServices;
 using FappCommon.Interfaces.ICurrentUserServices;
-using FappCommon.Kafka.Config;
 using FappCommon.Kafka.Extensions;
-using FappCommon.Kafka.Log;
 using FappCommon.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -18,14 +16,15 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<ICurrentUserServiceInt, CurrentUserServiceIntImpl>();
 builder.Services.AddLogTraceMiddlewareWithCurrentUserService<ICurrentUserServiceInt>();
 
-builder.Services.AddSingleton<KafkaProducerConfig>();
-builder.Services.AddScoped<KafkaLogProducerService>();
+builder.Logging.ClearProviders();
+builder.Logging.AddKafkaLogger();
+// builder.Logging.AddConsole();
 
 #region Swagger
 
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Jad - User Microservice", Version = "v1.0" });
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "FappCommon - TestWebProject", Version = "v1.0" });
 
     // Allow swagger to handle JWT Bearer tokens and authorization
     // Should not change "oauth2" to another name
@@ -63,11 +62,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 builder.Services.AddHttpContextAccessor();
-
-builder.Logging.ClearProviders();
-builder.Logging.AddKafkaLogger();
-
-// builder.Logging.AddConsole();
 
 
 WebApplication app = builder.Build();
