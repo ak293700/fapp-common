@@ -8,7 +8,7 @@
 
     <PropertyGroup>
         <PackageId>FappCommon.Kafka</PackageId>
-        <Version>1.0.2</Version>
+        <Version>1.0.3</Version>
         <Authors>Alexandre AKDENIZ</Authors>
         <Description>Set of method to produce kafka messages. Focus on logging</Description>
         <RepositoryUrl>https://github.com/ak293700/fapp-common</RepositoryUrl>
@@ -21,14 +21,12 @@
         <PackageReference Include="FappCommon.Exceptions" Version="1.0.3"/>
         <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2"/>
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0"/>
         <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0"/>
         <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="7.0.0"/>
     </ItemGroup>
 
 
-    <ItemGroup>
-        <Folder Include="Base\"/>
-    </ItemGroup>
 
 
 </Project>

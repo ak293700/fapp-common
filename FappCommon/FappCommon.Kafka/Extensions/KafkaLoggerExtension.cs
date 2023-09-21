@@ -13,6 +13,8 @@ public static class KafkaLoggerExtension
     {
         IServiceCollection services = builder.Services;
 
+        services.AddKafkaProducer<KafkaLogProducerService, KafkaLogProducerConfig>();
+
         services.TryAddSingleton<KafkaLogProducerConfig>();
         services.TryAddScoped<KafkaLogProducerService>();
 
